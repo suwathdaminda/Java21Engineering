@@ -80,8 +80,22 @@ public class LambdaTest {
 
 		double[] ary = {1.0,2.0,9.0};
 		System.out.println("avg of array [] is " + e.test(ary));
-		System.out.println("avg of array [] is " + e.test(new double[0]));
+//		System.out.println("avg of array [] is " + e.test(new double[0]));
 		
+		int num = 10;
+		LambdaVariableCaptureFunction function = (n) -> {
+			int v = num + n;
+			
+			// error because try to modufy effectively final 
+//			num++;
+			
+			
+			return v;
+		};
+		
+		// error because try to modufy effectively final 
+		//num =9;
+		System.out.println("variabe capture = "+ function.func(20));
 	}
 
 }
